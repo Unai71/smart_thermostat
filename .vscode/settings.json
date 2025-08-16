@@ -21,6 +21,8 @@
     "mqtt_client.h": "c",
     "esp_timer.h": "c",
     "cstdlib": "c",
-    "gpio.h": "c"
+    "gpio.h": "c",
+    "esp_system.h": "c",
+    "temp_h_data.h": "c"
   }
 }
