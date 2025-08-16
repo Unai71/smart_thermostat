@@ -1,6 +1,5 @@
 #include "library_imports.h"
 #include "temp_h_data.h"
-zz
 
 const char *TAG = "main";
 const char *DS18B20_TAG = "ds18b20";
