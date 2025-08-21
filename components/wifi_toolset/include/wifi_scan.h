@@ -38,6 +38,6 @@ extern const char *scan_tag;
 esp_err_t wifi_scan_init(void);
 
 /* Function to perform a Wi-Fi scan and log the results */
-esp_err_t wifi_scan_list_aps(void);
+void wifi_scan_task(void *);
 
 #endif /* WIFI_SCAN_H */

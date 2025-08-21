@@ -34,11 +34,9 @@ void app_main()
         return;
     }
 
-    // Perform a Wi-Fi scan and log the results
-    ret = wifi_scan_list_aps();
-    if (ret != ESP_OK) {
-        ESP_LOGE("app_main", "Wi-Fi scan failed: %s", esp_err_to_name(ret));
-    }
+    // Create a task for continuous Wi-Fi scanning
+    xTaskCreate(wifi_scan_task, "wifi_scan_task", 4096, NULL, 5, NULL);
+
 }
 
 // Commented out the temperature timer setup function for now
