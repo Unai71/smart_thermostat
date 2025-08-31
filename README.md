@@ -1,32 +1,68 @@
-# _Sample project_
+# smart_thermostat
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+A smart thermostat firmware project based on ESP-IDF. This repository contains the application source, build scripts, and configuration to build and flash firmware to an ESP32-based device.
 
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
+Status: work in progress — see the source in [main/main.c](main/main.c) and the project configuration in [CMakeLists.txt](CMakeLists.txt).
 
+## Features
+- Temperature sensing and basic control loop
+- Wi‑Fi connectivity (configurable)
+- OTA-ready build layout (if enabled via sdkconfig)
+- Example entry point at [main/main.c](main/main.c)
 
+## Hardware
+Target: ESP32 family development boards. Adapt pin assignments and peripherals in the `main` component.
 
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
+## Quick start
 
-## Example folder contents
+Prerequisites:
+- ESP-IDF toolchain installed and activated.
+- USB serial driver for your board.
+- Project environment variables (use `idf.py` environment).
 
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
-
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
-
-Below is short explanation of remaining files in the project folder.
-
+Build:
+```sh
+idf.py build
 ```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
+
+Flash (replace PORT with your device port):
+```sh
+idf.py -p /dev/ttyUSB0 flash monitor
 ```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+
+To clean:
+```sh
+idf.py fullclean
+```
+
+## Configuration
+Project defaults are stored in [sdkconfig](sdkconfig). Use:
+```sh
+idf.py menuconfig
+```
+to adjust Wi‑Fi, peripherals, and other options.
+
+## Project layout
+- [CMakeLists.txt](CMakeLists.txt) — top-level CMake configuration
+- main/ — application component
+  - [main/main.c](main/main.c) — example application entry
+  - main/CMakeLists.txt — component build info
+- build/ — build artifacts (ignored in VCS)
+- sdkconfig — project configuration file
+- LICENSE — project license ([LICENSE](LICENSE))
+
+## Development notes
+- Use the provided devcontainer for a reproducible development environment: [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json).
+- VSCode settings and launch configs are available in [.vscode](.vscode).
+
+## Testing
+Add unit/integration tests under a tests/ folder and integrate with the CI/tooling you prefer. Local testing can use the ESP-IDF test frameworks or host-side mocks.
+
+## Contributing
+1. Create an issue describing the bug or feature.
+2. Create a branch from `main`.
+3. Open a PR with a clear description and testing steps.
+
+## License
+This project is released under the terms in [LICENSE](LICENSE).
+If you need a different license, update the LICENSE
