@@ -1,0 +1,14 @@
+menu "Smart Thermostat Options"
+    choice PROV_MODE
+        prompt "Provisioning Mode"
+        default PROV_MODE_WIFI
+        help
+            Choose whether to provision via Wi-Fi or Thread.
+
+        config PROV_MODE_WIFI
+            bool "Wi-Fi"
+
+        config PROV_MODE_THREAD
+            bool "Thread"
+    endchoice
+endmenu

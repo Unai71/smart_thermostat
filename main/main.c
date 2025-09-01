@@ -84,10 +84,6 @@ void app_main(void)
         return; // or handle recovery
     }
 
-    // OPTIONAL for debugging: clear previously stored provisioning (uncomment to force fresh state)
-    esp_err_t r = wifi_prov_mgr_reset_provisioning();
-    ESP_LOGI(TAG, "wifi_prov_mgr_reset_provisioning: %s", esp_err_to_name(r));
-
     bool provisioned = false;
     
     ESP_ERROR_CHECK(wifi_prov_mgr_is_provisioned(&provisioned));
