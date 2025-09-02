@@ -18,7 +18,12 @@ void app_main(void)
         ESP_ERROR_CHECK(nvs_flash_init());
     }
     ESP_LOGI(TAG, "NVS initialized");
+    #ifdef CONFIG_PROV_MODE_WIFI
     wifi_provisioning_start();
+    #endif
+    #ifdef CONFIG_PROV_MODE_THREAD
+    ESP_LOGI(TAG,"Thread matter stack init"); 
+    #endif
     
 }
 
